@@ -32,7 +32,7 @@ public String healthCheck(){
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().
                 antMatchers("/public/**").permitAll()
-                .antMatchers("/journal/**", "/user/**").authenticated()
+                .antMatchers("/journal/**","/user/**","/user/greetings").authenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated() .
                 and().httpBasic().and().
         sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();

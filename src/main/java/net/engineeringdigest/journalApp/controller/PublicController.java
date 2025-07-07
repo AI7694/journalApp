@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/public")
-public class PublicController {
+public class  PublicController {
 
 @Autowired
 private UserService userService;
@@ -15,7 +15,6 @@ private UserService userService;
     public String healthCheck(){
         return "OK";
     }
-
     @PostMapping("/createUser")
     public String createUser(@RequestBody User user){
         System.out.println("user creation started");

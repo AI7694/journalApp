@@ -37,8 +37,8 @@ public String healthCheck(){
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().
-                antMatchers("/public/**").permitAll()
-                .antMatchers("/journal/**", "/user/**").authenticated()
+                antMatchers("/public/**","/user/**","/journal/user/getAll").permitAll()
+                .antMatchers("/journal/**").authenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN").anyRequest().permitAll().
                 and().httpBasic().and().
         sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();

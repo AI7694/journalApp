@@ -1,20 +1,18 @@
 package net.engineeringdigest.journalApp.service;
 
 import lombok.extern.slf4j.Slf4j;
-import net.engineeringdigest.journalApp.Entity.JournalEntry;
+import net.engineeringdigest.journalApp.Entity.JournalApp;
 import net.engineeringdigest.journalApp.Entity.User;
 import net.engineeringdigest.journalApp.repository.JournalEntryRepository;
 import org.bson.types.ObjectId;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 @Slf4j
 public class JournalEntryService {
 
@@ -27,11 +25,11 @@ public class JournalEntryService {
 //   private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
 
 //    @Transactional
-    public void saveEntry(JournalEntry journalEntry, String userName) {
+    public void saveEntry(JournalApp journalEntry, String userName) {
 
         try {
             User user = userService.findByUserName(userName);//took user
-            JournalEntry saved = journalEntryRepository.save(journalEntry);//saved journal entry in loccal variable
+            JournalApp saved = journalEntryRepository.save(journalEntry);//saved journal entry in loccal variable
 
             user.getJournalEntries().add(saved);//add the saved journal entry
 //            user.setUserName(null);
@@ -43,16 +41,16 @@ public class JournalEntryService {
 
     }
 
-    public void saveEntry(JournalEntry journalEntry) {
+    public void saveEntry(JournalApp journalEntry) {
 
         journalEntryRepository.save(journalEntry);
     }
 
-    public List<JournalEntry> getAll() {
+    public List<JournalApp> getAll() {
         return journalEntryRepository.findAll();
     }
 
-    public Optional<JournalEntry> findById(ObjectId id) {
+    public Optional<JournalApp> findById(ObjectId id) {
         return journalEntryRepository.findById(id);
     }
 
