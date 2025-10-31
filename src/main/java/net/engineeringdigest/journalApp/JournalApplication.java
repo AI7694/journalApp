@@ -15,6 +15,7 @@ import javax.swing.*;
 
 @SpringBootApplication
 //@EnableTransactionManagement
+	//@EnableScheduling
 public class  JournalApplication {
 
 	public static void main(String[] args) {
